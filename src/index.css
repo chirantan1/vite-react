@@ -1,0 +1,163 @@
+/* Apply background to the whole page */
+body {
+  background: linear-gradient(135deg, #b2dfdb, #80cbc4);
+  background-size: cover;
+  background-position: center;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensures the body takes full height */
+}
+
+/* Style for the header */
+header {
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+  padding: 15px;
+  text-align: center;
+  border-bottom: 2px solid #4caf50;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  color: #388e3c;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin: 0 10px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #4caf50;
+  font-weight: bold;
+}
+
+
+/* Main container for content */
+main {
+  flex: 1; /* Ensures the footer stays at the bottom */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Style for the chatbot container */
+.chatbot-container {
+  background: linear-gradient(135deg, #ffffff, #e0f7fa);
+  width: 400px;
+  height: 600px;
+  margin: 20px auto;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Chatbot header */
+.chatbot-header {
+  background: linear-gradient(135deg, #43a047, #66bb6a);
+  color: #ffffff;
+  padding: 15px;
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+/* Chatbot body */
+.chatbot-body {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  background: linear-gradient(135deg, #ffffff, #f1f8e9);
+}
+
+.chatbot-body .message {
+  margin-bottom: 15px;
+}
+
+.chatbot-body .message.user {
+  text-align: right;
+}
+
+.chatbot-body .message.bot {
+  text-align: left;
+}
+
+.chatbot-body .message p {
+  display: inline-block;
+  padding: 12px 18px;
+  border-radius: 20px;
+  max-width: 75%;
+  word-wrap: break-word;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.chatbot-body .message.user p {
+  background: linear-gradient(135deg, #66bb6a, #388e3c);
+  color: #ffffff;
+}
+
+.chatbot-body .message.bot p {
+  background: linear-gradient(135deg, #e0e0e0, #bdbdbd);
+  color: #333333;
+}
+
+/* Chatbot input */
+.chatbot-input {
+  display: flex;
+  border-top: 2px solid #b2ebf2;
+  padding: 15px;
+  background: linear-gradient(135deg, #ffffff, #e0f7fa);
+}
+
+.chatbot-input input[type="text"] {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #b2dfdb;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.chatbot-input input[type="text"]:focus {
+  border-color: #43a047;
+  outline: none;
+}
+
+.chatbot-input button {
+  margin-left: 12px;
+  padding: 12px 20px;
+  border: none;
+  background: linear-gradient(135deg, #43a047, #66bb6a);
+  color: #ffffff;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.chatbot-input button:hover {
+  background: linear-gradient(135deg, #388e3c, #2e7d32);
+  transform: translateY(-2px);
+}
+
+/* Style for footer */
+footer {
+  background-color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+  padding: 15px;
+  font-size: 1rem;
+  border-top: 2px solid #4caf50;
+  width: 100%;
+}

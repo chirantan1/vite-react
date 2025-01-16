@@ -1,0 +1,125 @@
+/* services.css */
+.services-container {
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    background-color: rgba(249, 249, 249, 0.9); /* Light transparent background */
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap; /* This allows the cards to wrap into new rows */
+    justify-content: space-between; /* Align the items with space between them */
+    border-radius: 12px; /* Rounded corners for the container */
+}
+
+h1 {
+    text-align: center;
+    color: #34495e;
+    font-size: 36px;
+    margin-bottom: 20px;
+    animation: fadeIn 1s ease-out;
+}
+
+p {
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 30px;
+    color: #7f8c8d;
+    animation: fadeIn 1.5s ease-out;
+}
+
+/* Service card styles */
+.service-item {
+    flex: 0 0 calc(50% - 20px); /* Makes each card take 50% of the container width minus margin */
+    margin-top: 30px;
+    padding: 25px;
+    background: linear-gradient(135deg, #3498db, #9b59b6); /* Vibrant gradient background */
+    border-radius: 12px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    animation: slideInFromLeft 1s ease-out;
+}
+
+/* Service card title */
+.service-item h2 {
+    color: #ffffff;
+    font-size: 24px;
+    margin-bottom: 15px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Service card description */
+.service-item p {
+    font-size: 16px;
+    color: #ecf0f1;
+}
+
+/* Hover effect */
+.service-item:hover {
+    transform: translateY(-15px) scale(1.05);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, #f39c12, #e74c3c); /* Smoother hover effect */
+}
+
+.service-item:hover h2 {
+    color: #fff;
+    transform: scale(1.1);
+}
+
+/* Specific service card color adjustments for General Medicine */
+.service-item.general-medicine {
+    background: linear-gradient(135deg, #2ecc71, #27ae60); /* Fresh green gradient for general medicine */
+}
+
+.service-item.general-medicine:hover {
+    background: linear-gradient(135deg, #16a085, #1abc9c); /* Darker green for hover */
+}
+
+.service-item.general-medicine h2 {
+    color: #fff; /* White text for the title */
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Slide-in animation */
+@keyframes slideInFromLeft {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 28px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+
+    .service-item {
+        padding: 15px;
+        flex: 0 0 calc(100% - 20px); /* Make each card take up 100% width on smaller screens */
+    }
+
+    .service-item h2 {
+        font-size: 20px;
+    }
+
+    .service-item p {
+        font-size: 14px;
+    }
+}
