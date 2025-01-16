@@ -65,18 +65,7 @@ p {
     transform: scale(1.1);
 }
 
-/* Specific service card color adjustments for General Medicine */
-.service-item.general-medicine {
-    background: linear-gradient(135deg, #2ecc71, #27ae60); /* Fresh green gradient for general medicine */
-}
 
-.service-item.general-medicine:hover {
-    background: linear-gradient(135deg, #16a085, #1abc9c); /* Darker green for hover */
-}
-
-.service-item.general-medicine h2 {
-    color: #fff; /* White text for the title */
-}
 
 /* Fade-in animation */
 @keyframes fadeIn {
