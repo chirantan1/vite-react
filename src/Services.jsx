@@ -11,9 +11,7 @@ const Services = () => {
             </p>
 
             <div className="service-item">
-                <h2>
-    <a href="/general-medicine" className="link-text">General Medicine</a>
-</h2>
+                <h2>General Medicine</h2>
 
                 <p>
                     Our general medicine department provides primary care, routine check-ups, and treatment for common ailments.
