@@ -5,7 +5,6 @@ import Home from './home.jsx';
 import Appointment from './Appointment.jsx';
 import Services from './Services.jsx';
 import Contact from './Contact.jsx';
-import GeneralMedicine from './GeneralMedicine.jsx';
 import Doctors from './DoctorProfile.jsx';
 
 function App() {
@@ -17,7 +16,6 @@ function App() {
                 <Route path="/appointment" element={<Appointment />} />
                 <Route path="/services" element={<Services />} />
                 <Route path="/contact" element={<Contact />} />
-                <Route path="/general-medicine" element={<GeneralMedicine />} />
                 <Route path="/doctors" element={<Doctors />} /> {/* Fixed Router to Route */}
             </Routes>
             <Footer />
