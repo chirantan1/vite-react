@@ -10,9 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "lodash.clonedeep": "^4.5.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^6.28.1"
+    "react-router-dom": "^6.28.1",
+    "structured-clone": "^0.2.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
@@ -24,6 +26,6 @@
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.16",
     "globals": "^15.14.0",
-    "vite": "^6.0.5"
+    "vite": "^6.0.7"
   }
 }
