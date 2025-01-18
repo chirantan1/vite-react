@@ -1,114 +1,299 @@
 /* services.css */
-.services-container {
-    padding: 20px;
+
+/* General Body Styles */
+body {
     font-family: 'Arial', sans-serif;
-    background-color: rgba(249, 249, 249, 0.9); /* Light transparent background */
-    max-width: 1200px;
-    margin: auto;
-    display: flex;
-    flex-wrap: wrap; /* This allows the cards to wrap into new rows */
-    justify-content: space-between; /* Align the items with space between them */
-    border-radius: 12px; /* Rounded corners for the container */
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-image: url('./assets/bg.jpg'); /* Replace with the path to your image */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
 
+.services-container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.85); /* Semi-transparent background for readability */
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+/* Heading and Paragraph */
 h1 {
     text-align: center;
-    color: #34495e;
-    font-size: 36px;
+    color: #26ff00;
+    font-size: 30px;
+    font-weight: 600;
     margin-bottom: 20px;
-    animation: fadeIn 1s ease-out;
 }
 
 p {
     text-align: center;
-    font-size: 18px;
-    margin-bottom: 30px;
-    color: #7f8c8d;
-    animation: fadeIn 1.5s ease-out;
-}
-
-/* Service card styles */
-.service-item {
-    flex: 0 0 calc(50% - 20px); /* Makes each card take 50% of the container width minus margin */
-    margin-top: 30px;
-    padding: 25px;
-    background: linear-gradient(135deg, #3498db, #9b59b6); /* Vibrant gradient background */
-    border-radius: 12px;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-    animation: slideInFromLeft 1s ease-out;
-}
-
-/* Service card title */
-.service-item h2 {
-    color: #ffffff;
-    font-size: 24px;
-    margin-bottom: 15px;
-    transition: color 0.3s ease, transform 0.3s ease;
-}
-
-/* Service card description */
-.service-item p {
     font-size: 16px;
-    color: #ecf0f1;
+    color: #555;
+    margin-bottom: 30px;
+    line-height: 1.5;
 }
 
-/* Hover effect */
-.service-item:hover {
-    transform: translateY(-15px) scale(1.05);
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
-    background: linear-gradient(135deg, #f39c12, #e74c3c); /* Smoother hover effect */
+/* Search Bar */
+.search-bar {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: 2px solid #00ff08;
+    font-size: 16px;
+    background: #f8f9fa;
+    transition: all 0.3s ease;
 }
 
-.service-item:hover h2 {
-    color: #fff;
-    transform: scale(1.1);
+.search-bar:focus {
+    outline: none;
+    background: #ffffff;
+    border-color: #0056b3;
 }
 
+/* Services List */
+.services-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
 
+/* Service Cards */
+.service-card {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
 
-/* Fade-in animation */
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Service Header */
+.service-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    background: #016d18;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 500;
+    transition: background 0.3s ease;
+}
+
+.service-header:hover {
+    background: #b0d50b;
+}
+
+.service-icon {
+    font-size: 26px;
+}
+
+.expand-icon {
+    font-size: 22px;
+}
+
+/* Service Details */
+.service-details {
+    padding: 20px;
+    font-size: 14px;
+    background: #f8f9fa;
+    border-top: 1px solid #ddd;
+    line-height: 1.6;
+    transition: all 0.3s ease;
+}
+
+/* Buttons */
+.learn-more-button,
+.book-appointment-button {
+    display: inline-block;
+    margin: 10px 0 0;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    background: #28a745;
+    color: #ffffff;
+    transition: background 0.3s ease;
+}
+
+.learn-more-button:hover,
+.book-appointment-button:hover {
+    background: #218838;
+}
+
+.learn-more-button:focus,
+.book-appointment-button:focus {
+    outline: none;
+}
+
+.learn-more-button {
+    background: #28a745;
+}
+
+.book-appointment-button {
+    background: #ffc107;
+}
+
+.book-appointment-button:hover {
+    background: #e0a800;
+}
+
+.service-card .service-details {
+    transition: max-height 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+/* Mobile Responsiveness */
+
+/* For devices with a max width of 1024px (iPad, large screens) */
+@media (max-width: 1024px) {
+    .services-container {
+        padding: 20px;
     }
-    100% {
-        opacity: 1;
-    }
-}
 
-/* Slide-in animation */
-@keyframes slideInFromLeft {
-    0% {
-        transform: translateX(-100%);
-        opacity: 0;
-    }
-    100% {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-/* Mobile responsiveness */
-@media (max-width: 768px) {
     h1 {
         font-size: 28px;
     }
 
+    .service-header {
+        font-size: 18px;
+    }
+
+    .service-icon {
+        font-size: 22px;
+    }
+
+    .learn-more-button,
+    .book-appointment-button {
+        padding: 10px 18px;
+        font-size: 14px;
+    }
+}
+
+/* For devices with a max width of 768px (tablets and smaller phones, including Vivo, Oppo, Samsung) */
+@media (max-width: 768px) {
+    .services-container {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
     p {
+        font-size: 14px;
+    }
+
+    .search-bar {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .services-list {
+        flex-direction: column;
+    }
+
+    .service-card {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .service-header {
         font-size: 16px;
     }
 
-    .service-item {
-        padding: 15px;
-        flex: 0 0 calc(100% - 20px); /* Make each card take up 100% width on smaller screens */
-    }
-
-    .service-item h2 {
+    .service-icon {
         font-size: 20px;
     }
 
-    .service-item p {
+    .expand-icon {
+        font-size: 18px;
+    }
+
+    .learn-more-button,
+    .book-appointment-button {
+        padding: 10px 15px;
         font-size: 14px;
+    }
+}
+
+/* Extra Small Devices (Mobile Portrait, smaller than 480px, such as some Vivo and Oppo phones) */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 22px;
+    }
+
+    p {
+        font-size: 12px;
+    }
+
+    .learn-more-button,
+    .book-appointment-button {
+        width: 100%;
+        font-size: 12px;
+        padding: 10px;
+    }
+
+    .service-header {
+        font-size: 14px;
+    }
+
+    .service-card {
+        margin: 8px 0;
+    }
+
+    .service-icon {
+        font-size: 18px;
+    }
+
+    .search-bar {
+        font-size: 12px;
+        padding: 8px;
+    }
+}
+
+/* Very small screens (e.g., smaller Samsung or older models) */
+@media (max-width: 375px) {
+    h1 {
+        font-size: 18px;
+    }
+
+    p {
+        font-size: 12px;
+    }
+
+    .search-bar {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    .learn-more-button,
+    .book-appointment-button {
+        font-size: 12px;
+    }
+
+    .service-icon {
+        font-size: 16px;
+    }
+
+    .service-card {
+        padding: 10px;
+        font-size: 12px;
     }
 }

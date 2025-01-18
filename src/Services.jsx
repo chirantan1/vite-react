@@ -1,112 +1,90 @@
-
+import { useState } from 'react';
 import './services.css'; // Import the CSS file
 
 const Services = () => {
+    const [search, setSearch] = useState('');
+    const [expanded, setExpanded] = useState(null);
+
+    const services = [
+        { category: 'General', name: 'General Medicine', description: 'Primary care, routine check-ups, and treatment for common ailments.', icon: '🩺' },
+        { category: 'Child Care', name: 'Pediatrics', description: 'Specialized care for infants, children, and adolescents.', icon: '👶' },
+        { category: 'Heart Care', name: 'Cardiology', description: 'Comprehensive heart care and preventive cardiology.', icon: '❤️' },
+        { category: 'Bone & Joints', name: 'Orthopedics', description: 'Treatment for bone, joint, and muscle disorders.', icon: '🦴' },
+        { category: 'Women’s Health', name: 'Gynecology & Obstetrics', description: 'Prenatal care, childbirth, and gynecological treatment.', icon: '🤰' },
+        { category: 'Cancer Care', name: 'Oncology', description: 'Advanced cancer care and treatments.', icon: '🎗️' },
+        { category: 'Nervous System', name: 'Neurology', description: 'Treatment for neurological conditions like stroke and epilepsy.', icon: '🧠' },
+        { category: 'Imaging', name: 'Radiology', description: 'X-rays, MRIs, CT scans, and ultrasounds.', icon: '📸' },
+        { category: 'Emergency', name: 'Emergency & Trauma Care', description: '24/7 immediate medical attention.', icon: '🚨' },
+        { category: 'Rehabilitation', name: 'Physiotherapy', description: 'Recovery services for injuries and chronic conditions.', icon: '🏋️‍♂️' },
+        { category: 'Diagnostics', name: 'Diagnostics & Pathology', description: 'Laboratory and diagnostic services.', icon: '🔬' },
+        { category: 'Medications', name: 'Pharmacy', description: 'On-site pharmacy for medications and supplies.', icon: '💊' },
+        { category: 'Dental', name: 'Dental Care', description: 'Preventive care, cosmetic dentistry, and oral surgery.', icon: '🦷' },
+        { category: 'Nutrition', name: 'Nutrition & Dietetics', description: 'Dietary consultations for health and wellness.', icon: '🥗' },
+    ];
+
+    const filteredServices = services.filter(service =>
+        service.name.toLowerCase().includes(search.toLowerCase()) ||
+        service.category.toLowerCase().includes(search.toLowerCase())
+    );
+
+    const toggleExpand = (index) => {
+        setExpanded(expanded === index ? null : index);
+    };
+
+    const handleLearnMore = (serviceName) => {
+        alert(`Learning more about ${serviceName}`);
+    };
+
+    const handleBookAppointment = (serviceName) => {
+        alert(`Booking appointment for ${serviceName}`);
+    };
+
     return (
         <div className="services-container">
             <h1>Our Services</h1>
             <p>
-                We are committed to providing comprehensive healthcare services to meet the diverse needs of our patients.
-                Below is an overview of the services we offer:
+                Explore our comprehensive range of healthcare services designed to meet your needs.
             </p>
 
-            <div className="service-item">
-                <h2>General Medicine</h2>
+            <input
+                type="text"
+                className="search-bar"
+                placeholder="Search for a service..."
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+            />
 
-                <p>
-                    Our general medicine department provides primary care, routine check-ups, and treatment for common ailments.
-                </p>
-            </div>
-
-            <div className="service-item">
-                <h2>Pediatrics</h2>
-                <p>
-                    Specialized care for infants, children, and adolescents, including immunizations, growth monitoring, and treatment of childhood illnesses.
-                </p>
-            </div>
-
-            <div className="service-item">
-                <h2>Cardiology</h2>
-                <p>
-                    Comprehensive heart care, including diagnostic tests, treatment of heart diseases, and preventive cardiology.
-                </p>
-            </div>
-
-            <div className="service-item">
-                <h2>Orthopedics</h2>
-                <p>
-                    Expert treatment for bone, joint, and muscle disorders, including fractures, arthritis, and sports injuries.
-                </p>
-            </div>
-
-            <div className="service-item">
-                <h2>Gynecology & Obstetrics</h2>
-                <p>
-                    Comprehensive care for women, including prenatal care, childbirth, and treatment of gynecological issues.
-                </p>
-            </div>
-
-            <div className="service-item">
-                <h2>Oncology</h2>
-                <p>
-                    Advanced cancer care, including chemotherapy, radiation therapy, and surgical oncology services.
-                </p>
-            </div>
-
-            <div className="service-item">
-                <h2>Neurology</h2>
-                <p>
-                    Diagnosis and treatment of neurological conditions, such as stroke, epilepsy, and neurodegenerative diseases.
-                </p>
-            </div>
-
-            <div className="service-item">
-                <h2>Radiology</h2>
-                <p>
-                    State-of-the-art imaging services, including X-rays, MRIs, CT scans, and ultrasounds.
-                </p>
-            </div>
-
-            <div className="service-item">
-                <h2>Emergency & Trauma Care</h2>
-                <p>
-                    24/7 emergency services with a dedicated team of doctors and nurses for immediate medical attention.
-                </p>
-            </div>
-
-            <div className="service-item">
-                <h2>Physiotherapy</h2>
-                <p>
-                    Rehabilitation services to help patients recover from injuries, surgeries, and chronic conditions.
-                </p>
-            </div>
-
-            <div className="service-item">
-                <h2>Diagnostics & Pathology</h2>
-                <p>
-                    Comprehensive laboratory and diagnostic services to assist in accurate diagnosis and treatment planning.
-                </p>
-            </div>
-
-            <div className="service-item">
-                <h2>Pharmacy</h2>
-                <p>
-                    On-site pharmacy to provide medications and medical supplies to our patients.
-                </p>
-            </div>
-
-            <div className="service-item">
-                <h2>Dental Care</h2>
-                <p>
-                    A wide range of dental services, including preventive care, cosmetic dentistry, and oral surgery.
-                </p>
-            </div>
-
-            <div className="service-item">
-                <h2>Nutrition & Dietetics</h2>
-                <p>
-                    Professional dietary consultations to help patients achieve their health and wellness goals.
-                </p>
+            <div className="services-list">
+                {filteredServices.length > 0 ? (
+                    filteredServices.map((service, index) => (
+                        <div key={index} className="service-card">
+                            <div className="service-header" onClick={() => toggleExpand(index)}>
+                                <span className="service-icon">{service.icon}</span>
+                                <h2>{service.name}</h2>
+                                <span className="expand-icon">{expanded === index ? '-' : '+'}</span>
+                            </div>
+                            {expanded === index && (
+                                <div className="service-details">
+                                    <p>{service.description}</p>
+                                    <button 
+                                        className="learn-more-button" 
+                                        onClick={() => handleLearnMore(service.name)}
+                                    >
+                                        Learn More
+                                    </button>
+                                    <button 
+                                        className="book-appointment-button" 
+                                        onClick={() => handleBookAppointment(service.name)}
+                                    >
+                                        Book Appointment
+                                    </button>
+                                </div>
+                            )}
+                        </div>
+                    ))
+                ) : (
+                    <p>No services found. Try searching for something else.</p>
+                )}
             </div>
         </div>
     );

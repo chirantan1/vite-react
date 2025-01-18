@@ -1,0 +1,36 @@
+/* Footer Styling */
+footer {
+    background-color: #dee9f575;
+    color: #ecf0f1;
+    text-align: center;
+    padding: 20px 15px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+/* For devices with max width of 1024px (laptops and large tablets) */
+@media (max-width: 1024px) {
+    footer {
+        font-size: 16px;
+        padding: 20px 30px; /* Ensure there's enough space around the text */
+    }
+}
+
+/* For devices with max width of 768px (tablets and smaller phones) */
+@media (max-width: 768px) {
+    footer {
+        font-size: 14px; /* Slightly smaller text */
+        padding: 15px 20px;
+    }
+}
+
+/* For mobile devices with max width of 480px (smaller phones) */
+@media (max-width: 480px) {
+    footer {
+        font-size: 12px; /* Smaller text for very small devices */
+        padding: 10px 15px;
+    }
+}

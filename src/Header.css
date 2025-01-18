@@ -1,0 +1,128 @@
+/* Header Styling */
+header {
+    background-color: #ffffff; /* Clean white background */
+    color: #2c3e50; /* Dark text color for readability */
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Subtle shadow for a refined look */
+    border-bottom: 1px solid #e0e0e0;
+    background-color: #ffffff67;
+}
+
+/* Professional Styling for h1 */
+header h1 {
+    font-size: 2.5rem; /* Slightly smaller font for balance */
+    font-weight: 600; /* Less bold, more refined */
+    color: #2c3e50; /* Dark color for better readability */
+    margin: 0;
+    text-transform: uppercase; /* Clean all-caps for a strong yet elegant look */
+    letter-spacing: 2px; /* Reduced letter spacing for a more compact and professional appearance */
+    background: linear-gradient(90deg, #1abc9c, #16a085); 
+    background-clip: text;
+    -webkit-background-clip: text; /* Clips the background to the text */
+    color: transparent; /* Makes the text transparent to show the gradient */
+    text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth without being too harsh */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+/* Hover Effect for h1 */
+header h1:hover {
+    transform: scale(1.05); /* Slight scale effect for interactivity */
+    text-shadow: 2px 3px 8px rgba(0, 0, 0, 0.15); /* Increased shadow on hover for a more elegant effect */
+}
+
+/* Navigation Styles */
+nav ul {
+    list-style-type: none;
+    display: flex;
+    gap: 25px;
+}
+
+nav ul li {
+    display: inline-block;
+}
+
+nav ul li a {
+    color: #2c3e50;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 10px 15px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #1abc9c;
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+/* Mobile and Tablet Responsiveness as before (you can keep previous media queries) */
+
+/* For devices with max width of 1024px (laptops and large tablets) */
+@media (max-width: 1024px) {
+    header {
+        padding: 15px 20px; /* Reduced padding */
+        flex-direction: column; /* Stack header elements vertically */
+        text-align: center;
+    }
+
+    header h1 {
+        font-size: 2rem; /* Slightly smaller title for small screens */
+        margin-bottom: 15px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav ul li {
+        width: 100%;
+        text-align: center;
+    }
+
+    nav ul li a {
+        padding: 12px 0; /* Larger padding for better clickability */
+        font-size: 1.2rem; /* Slightly larger text for better readability */
+    }
+}
+
+/* For devices with max width of 768px (tablets and smaller phones) */
+@media (max-width: 768px) {
+    header {
+        padding: 12px;
+    }
+
+    header h1 {
+        font-size: 1.7rem; /* Smaller font size for mobile */
+    }
+
+    nav ul li a {
+        font-size: 1rem; /* Smaller font size for the links */
+    }
+}
+
+/* For mobile devices with max width of 480px (smallest phones) */
+@media (max-width: 480px) {
+    header {
+        padding: 10px;
+    }
+
+    header h1 {
+        font-size: 1.4rem; /* Further reduce heading size */
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    nav ul li a {
+        font-size: 0.9rem; /* Adjust text size */
+        padding: 8px 15px; /* Adjust padding for small screens */
+    }
+}

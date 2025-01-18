@@ -9,9 +9,12 @@ const Appointment = () => {
         doctor: "",
         date: "",
         time: "",
+        timeSlot: "",
         notes: "",
         paymentMethod: "",
         cardDetails: "",
+        address: "",
+        termsAccepted: false
     });
 
     const doctors = [
@@ -23,11 +26,26 @@ const Appointment = () => {
         { value: "dermatologist", label: "Dr. Rachel Adams (Dermatologist)" },
         { value: "orthopedist", label: "Dr. Lisa Turner (Orthopedist)" },
         { value: "gynecologist", label: "Dr. Olivia Green (Gynecologist)" },
+        { value: "surgeon", label: "Dr. Kevin White (Surgeon)" },
+        { value: "psychologist", label: "Dr. Emma Clark (Psychologist)" },
+    ];
+
+    const availableTimeSlots = [
+        "9:00 AM - 10:00 AM",
+        "10:00 AM - 11:00 AM",
+        "11:00 AM - 12:00 PM",
+        "12:00 PM - 1:00 PM",
+        "2:00 PM - 3:00 PM",
+        "3:00 PM - 4:00 PM",
+        "4:00 PM - 5:00 PM"
     ];
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
+        const { name, value, type, checked } = e.target;
+        setFormData({
+            ...formData,
+            [name]: type === "checkbox" ? checked : value
+        });
     };
 
     const handleSubmit = (e) => {
@@ -116,18 +134,24 @@ const Appointment = () => {
                     required
                 />
 
-                <label className="label" htmlFor="time">
-                    Preferred Time:
+                <label className="label" htmlFor="timeSlot">
+                    Select Preferred Time Slot:
                 </label>
-                <input
+                <select
                     className="input"
-                    type="time"
-                    id="time"
-                    name="time"
-                    value={formData.time}
+                    id="timeSlot"
+                    name="timeSlot"
+                    value={formData.timeSlot}
                     onChange={handleChange}
                     required
-                />
+                >
+                    <option value="">Choose a time slot</option>
+                    {availableTimeSlots.map((slot, index) => (
+                        <option key={index} value={slot}>
+                            {slot}
+                        </option>
+                    ))}
+                </select>
 
                 <label className="label" htmlFor="notes">
                     Additional Notes:
@@ -141,6 +165,21 @@ const Appointment = () => {
                     value={formData.notes}
                     onChange={handleChange}
                 ></textarea>
+
+                {/* Address Section */}
+                <label className="label" htmlFor="address">
+                    Address:
+                </label>
+                <input
+                    className="input"
+                    type="text"
+                    id="address"
+                    name="address"
+                    placeholder="Enter your address"
+                    value={formData.address}
+                    onChange={handleChange}
+                    required
+                />
 
                 {/* Payment Section */}
                 <h2 className="sectionHeader">Payment Details</h2>
@@ -189,6 +228,24 @@ const Appointment = () => {
                         <input
                             type="radio"
                             name="paymentMethod"
+                            value="stripe"
+                            onChange={handleChange}
+                        />
+                        Stripe
+                    </label>
+                    <label>
+                        <input
+                            type="radio"
+                            name="paymentMethod"
+                            value="apple_pay"
+                            onChange={handleChange}
+                        />
+                        Apple Pay
+                    </label>
+                    <label>
+                        <input
+                            type="radio"
+                            name="paymentMethod"
                             value="cash"
                             onChange={handleChange}
                         />
@@ -213,6 +270,18 @@ const Appointment = () => {
                         />
                     </div>
                 )}
+
+                {/* Terms and Conditions */}
+                <label>
+                    <input
+                        type="checkbox"
+                        name="termsAccepted"
+                        checked={formData.termsAccepted}
+                        onChange={handleChange}
+                        required
+                    />
+                    I agree to the terms and conditions.
+                </label>
 
                 {/* Submit Button */}
                 <button type="submit" className="button">

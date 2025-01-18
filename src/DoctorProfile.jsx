@@ -8,52 +8,46 @@ import './DoctorProfiles.css';
 
 const Doctors = () => {
     const [search, setSearch] = useState('');
+    const [sortOption, setSortOption] = useState('');
+    const [specialtyFilter, setSpecialtyFilter] = useState('');
     const [favorites, setFavorites] = useState([]);
     const navigate = useNavigate(); // Initialize the useNavigate hook
 
     const doctors = [
-        {
-            name: "Dr. John Doe",
-            specialty: "General Physician",
-            experience: "10 years",
-            image: doctor1Img,
-        },
-        {
-            name: "Dr. Sarah Lee",
-            specialty: "Pediatrician",
-            experience: "8 years",
-            image: doctor2Img,
-        },
-        {
-            name: "Dr. Mark Smith",
-            specialty: "Dentist",
-            experience: "12 years",
-            image: doctor3Img,
-        },
-        {
-            name: "Dr. Emily Brown",
-            specialty: "Cardiologist",
-            experience: "15 years",
-            image: doctor4Img,
-        },
+        { name: "Dr. John Doe", specialty: "General Physician", experience: "10 years", image: doctor1Img },
+        { name: "Dr. Sarah Lee", specialty: "Pediatrician", experience: "8 years", image: doctor2Img },
+        { name: "Dr. Mark Smith", specialty: "Dentist", experience: "12 years", image: doctor3Img },
+        { name: "Dr. Emily Brown", specialty: "Cardiologist", experience: "15 years", image: doctor4Img },
     ];
 
-    const filteredDoctors = doctors.filter((doctor) =>
-        doctor.name.toLowerCase().includes(search.toLowerCase())
-    );
+    // Filter doctors by search and specialty
+    const filteredDoctors = doctors
+        .filter((doctor) => doctor.name.toLowerCase().includes(search.toLowerCase()))
+        .filter((doctor) => (specialtyFilter ? doctor.specialty === specialtyFilter : true));
+
+    // Sort doctors
+    if (sortOption === 'name') {
+        filteredDoctors.sort((a, b) => a.name.localeCompare(b.name));
+    } else if (sortOption === 'experience') {
+        filteredDoctors.sort((a, b) => parseInt(b.experience) - parseInt(a.experience));
+    }
 
     const addToFavorites = (doctor) => {
         setFavorites((prevFavorites) => {
-            const existingDoctor = prevFavorites.find((item) => item.name === doctor.name);
-            if (!existingDoctor) {
+            if (!prevFavorites.find((item) => item.name === doctor.name)) {
                 return [...prevFavorites, doctor];
             }
             return prevFavorites;
         });
     };
 
+    const removeFromFavorites = (doctor) => {
+        setFavorites((prevFavorites) =>
+            prevFavorites.filter((item) => item.name !== doctor.name)
+        );
+    };
+
     const handleScheduleAppointment = () => {
-        // Navigate to the Appointment page
         navigate('/appointment');
     };
 
@@ -62,13 +56,35 @@ const Doctors = () => {
             <h1>Find a Doctor</h1>
             <p>Search for doctors in different specialties and book your appointment online.</p>
 
-            <input
-                type="text"
-                className="search-bar"
-                placeholder="Search for a doctor..."
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-            />
+            <div className="filters">
+                <input
+                    type="text"
+                    className="search-bar"
+                    placeholder="Search for a doctor..."
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                />
+                <select
+                    className="filter-dropdown"
+                    value={specialtyFilter}
+                    onChange={(e) => setSpecialtyFilter(e.target.value)}
+                >
+                    <option value="">All Specialties</option>
+                    <option value="General Physician">General Physician</option>
+                    <option value="Pediatrician">Pediatrician</option>
+                    <option value="Dentist">Dentist</option>
+                    <option value="Cardiologist">Cardiologist</option>
+                </select>
+                <select
+                    className="sort-dropdown"
+                    value={sortOption}
+                    onChange={(e) => setSortOption(e.target.value)}
+                >
+                    <option value="">Sort By</option>
+                    <option value="name">Name</option>
+                    <option value="experience">Experience</option>
+                </select>
+            </div>
 
             <div className="doctor-list">
                 {filteredDoctors.length > 0 ? (
@@ -100,6 +116,9 @@ const Doctors = () => {
                                 <div className="favorite-details">
                                     <h3>{doctor.name}</h3>
                                     <p>{doctor.specialty}</p>
+                                    <button className="remove-favorite-button" onClick={() => removeFromFavorites(doctor)}>
+                                        Remove
+                                    </button>
                                 </div>
                             </div>
                         ))}

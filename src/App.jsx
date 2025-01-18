@@ -9,7 +9,7 @@ import Doctors from './DoctorProfile.jsx';
 
 function App() {
     return (
-        <Router>
+        <Router basename='/vite-react'>
             <Header />
             <Routes>
                 <Route path="/" element={<Home />} />
